@@ -1,6 +1,6 @@
 Coding challenge for a hotel software company
 
-Coding Challenge:
+**Coding Challenge details:**
 
 Build a room occupancy optimization tool for one of our hotel clients! Our customer has a
 certain number of free rooms each night, as well as potential guests that would like to book a
@@ -88,3 +88,9 @@ You don’t need to do every part of the challenge perfectly. Most of all try to
 strengths. And if you feel unable to finish the project in time or can not fulfill any of the
 requirements for whatever reason, please let us know before you start working so that we
 can find another solution.
+
+**How to run the application:**
+
+1. Clone the repo
+1. Run `./gradlew bootRun` in the root directory
+1. You can find the service on the `http://localhost:8080/`
