@@ -10,6 +10,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,9 +38,9 @@ public class HttpGuestInfoProvider implements GuestInfoProvider {
 
     @Override
     public List<GuestInfo> retrieveGuestInfo() {
+        logger.info("Requesting guest info from the provided endpoint");
         final BigDecimal[] response = restTemplate.getForObject(URL, BigDecimal[].class);
         logger.info("Response: " + Arrays.toString(response));
-        // TODO: check the result first
-        return Arrays.stream(response).map(GuestInfo::new).collect(Collectors.toList());
+        return response != null ? Arrays.stream(response).map(GuestInfo::new).collect(Collectors.toList()) : Collections.emptyList();
     }
 }
