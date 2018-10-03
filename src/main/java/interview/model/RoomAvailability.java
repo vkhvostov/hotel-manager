@@ -1,5 +1,7 @@
 package interview.model;
 
+import java.util.Objects;
+
 /**
  * Created on 03.10.18
  * TODO: Add comment
@@ -26,5 +28,27 @@ public class RoomAvailability {
 
     public int getEconomy() {
         return economy;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        RoomAvailability that = (RoomAvailability) o;
+        return premium == that.premium &&
+                economy == that.economy;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(premium, economy);
+    }
+
+    @Override
+    public String toString() {
+        return "RoomAvailability{" +
+                "premium=" + premium +
+                ", economy=" + economy +
+                '}';
     }
 }
