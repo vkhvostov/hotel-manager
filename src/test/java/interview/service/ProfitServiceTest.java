@@ -23,7 +23,7 @@ public class ProfitServiceTest {
     public void calculateProfitWhenNotEnoughPremiumAndEconomy() {
         final RoomAvailability roomAvailability = new RoomAvailability(3, 3);
         final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
-        final Profit expectedProfit = new Profit(new BigDecimal(738), new BigDecimal(167));
+        final Profit expectedProfit = new Profit(BigDecimal.valueOf(738), BigDecimal.valueOf(167));
 
         Assert.assertEquals(expectedProfit, actualProfit);
     }
@@ -33,7 +33,7 @@ public class ProfitServiceTest {
     public void calculateProfitWhenRoomsMoreThanNeeded() {
         final RoomAvailability roomAvailability = new RoomAvailability(7, 5);
         final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
-        final Profit expectedProfit = new Profit(new BigDecimal(1054), new BigDecimal(189));
+        final Profit expectedProfit = new Profit(BigDecimal.valueOf(1054), BigDecimal.valueOf(189));
 
         Assert.assertEquals(expectedProfit, actualProfit);
     }
@@ -43,7 +43,7 @@ public class ProfitServiceTest {
     public void calculateProfitWhenEconomyRoomsMoreThanNeededPremiumNotEnough() {
         final RoomAvailability roomAvailability = new RoomAvailability(2, 7);
         final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
-        final Profit expectedProfit = new Profit(new BigDecimal(583), new BigDecimal(189));
+        final Profit expectedProfit = new Profit(BigDecimal.valueOf(583), BigDecimal.valueOf(189));
 
         Assert.assertEquals(expectedProfit, actualProfit);
     }
@@ -53,7 +53,7 @@ public class ProfitServiceTest {
     public void calculateProfitWhenPremiumRoomsMoreThanNeededEconomyNotEnough() {
         final RoomAvailability roomAvailability = new RoomAvailability(7, 1);
         final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
-        final Profit expectedProfit = new Profit(new BigDecimal(1153), new BigDecimal(45));
+        final Profit expectedProfit = new Profit(BigDecimal.valueOf(1153), BigDecimal.valueOf(45));
 
         Assert.assertEquals(expectedProfit, actualProfit);
     }
@@ -63,7 +63,7 @@ public class ProfitServiceTest {
     public void calculateProfitWhenNoAvailableRooms() {
         final RoomAvailability roomAvailability = new RoomAvailability(0, 0);
         final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
-        final Profit expectedProfit = new Profit(new BigDecimal(0), new BigDecimal(0));
+        final Profit expectedProfit = new Profit(BigDecimal.valueOf(0), BigDecimal.valueOf(0));
 
         Assert.assertEquals(expectedProfit, actualProfit);
     }
@@ -73,7 +73,7 @@ public class ProfitServiceTest {
     public void calculateProfitWhenNoGuests() {
         final RoomAvailability roomAvailability = new RoomAvailability(10, 10);
         final Profit actualProfit = profitService.calculateProfit(roomAvailability, Collections.emptyList());
-        final Profit expectedProfit = new Profit(new BigDecimal(0), new BigDecimal(0));
+        final Profit expectedProfit = new Profit(BigDecimal.valueOf(0), BigDecimal.valueOf(0));
 
         Assert.assertEquals(expectedProfit, actualProfit);
     }
@@ -97,10 +97,10 @@ public class ProfitServiceTest {
     public void calculateProfitWhenGuestInfoDecimal() {
         final RoomAvailability roomAvailability = new RoomAvailability(3, 2);
         final ArrayList<BigDecimal> guestInfo =
-                Lists.newArrayList(new BigDecimal(100.55), new BigDecimal(221.37), new BigDecimal(157.72),
-                        new BigDecimal(33.93), new BigDecimal(99.99), new BigDecimal(58.88));
+                Lists.newArrayList(BigDecimal.valueOf(100.55), BigDecimal.valueOf(221.37), BigDecimal.valueOf(157.72),
+                        BigDecimal.valueOf(33.93), BigDecimal.valueOf(99.99), BigDecimal.valueOf(58.88));
         final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
-        final Profit expectedProfit = new Profit(new BigDecimal(479.64), new BigDecimal(158.87));
+        final Profit expectedProfit = new Profit(BigDecimal.valueOf(479.64), BigDecimal.valueOf(158.87));
 
         Assert.assertEquals(expectedProfit, actualProfit);
     }

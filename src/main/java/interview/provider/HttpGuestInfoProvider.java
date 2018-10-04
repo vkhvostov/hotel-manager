@@ -28,9 +28,9 @@ public class HttpGuestInfoProvider implements GuestInfoProvider {
     private final String guestInfoUrl;
 
     @Autowired
-    public HttpGuestInfoProvider(@Value("${guest.info.url}") final String guestInfoUrl) {
+    public HttpGuestInfoProvider(final RestTemplate restTemplate, @Value("${guest.info.url}") final String guestInfoUrl) {
         this.guestInfoUrl = guestInfoUrl;
-        this.restTemplate = new RestTemplate();
+        this.restTemplate = restTemplate;
 
         // Make rest template able to parse text/plain as a json
         final MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter();
