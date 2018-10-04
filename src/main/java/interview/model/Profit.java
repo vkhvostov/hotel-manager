@@ -11,9 +11,9 @@ public class Profit {
     private final BigDecimal premium;
     private final BigDecimal economy;
 
-    public Profit(BigDecimal premium, BigDecimal economy) {
-        this.premium = premium;
-        this.economy = economy;
+    public Profit(final BigDecimal premium, final BigDecimal economy) {
+        this.premium = premium.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        this.economy = economy.setScale(2, BigDecimal.ROUND_HALF_EVEN);
     }
 
     public BigDecimal getPremium() {
@@ -25,10 +25,10 @@ public class Profit {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Profit profit = (Profit) o;
+        final Profit profit = (Profit) o;
         return Objects.equals(premium, profit.premium) &&
                 Objects.equals(economy, profit.economy);
     }

@@ -7,6 +7,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -89,5 +90,18 @@ public class ProfitServiceTest {
     public void calculateProfitWhenPremiumRoomsNegative() {
         final RoomAvailability roomAvailability = new RoomAvailability(-10, 10);
         profitService.calculateProfit(roomAvailability, Collections.emptyList());
+    }
+
+    // The test case when provided guest info has a decimal values
+    @Test
+    public void calculateProfitWhenGuestInfoDecimal() {
+        final RoomAvailability roomAvailability = new RoomAvailability(3, 2);
+        final ArrayList<BigDecimal> guestInfo =
+                Lists.newArrayList(new BigDecimal(100.55), new BigDecimal(221.37), new BigDecimal(157.72),
+                        new BigDecimal(33.93), new BigDecimal(99.99), new BigDecimal(58.88));
+        final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
+        final Profit expectedProfit = new Profit(new BigDecimal(479.64), new BigDecimal(158.87));
+
+        Assert.assertEquals(expectedProfit, actualProfit);
     }
 }

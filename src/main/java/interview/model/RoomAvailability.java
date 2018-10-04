@@ -16,7 +16,7 @@ public class RoomAvailability {
         this.economy = 0;
     }
 
-    public RoomAvailability(int premium, int economy) {
+    public RoomAvailability(final int premium, final int economy) {
         this.premium = premium;
         this.economy = economy;
     }
@@ -30,10 +30,10 @@ public class RoomAvailability {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        RoomAvailability that = (RoomAvailability) o;
+        final RoomAvailability that = (RoomAvailability) o;
         return premium == that.premium &&
                 economy == that.economy;
     }

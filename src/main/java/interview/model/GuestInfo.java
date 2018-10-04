@@ -10,7 +10,7 @@ public class GuestInfo {
 
     private final BigDecimal acceptablePrice;
 
-    public GuestInfo(BigDecimal acceptablePrice) {
+    public GuestInfo( final BigDecimal acceptablePrice) {
         this.acceptablePrice = acceptablePrice;
     }
 
@@ -19,10 +19,10 @@ public class GuestInfo {
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        GuestInfo guestInfo = (GuestInfo) o;
+        final GuestInfo guestInfo = (GuestInfo) o;
         return Objects.equals(acceptablePrice, guestInfo.acceptablePrice);
     }
 

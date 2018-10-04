@@ -57,8 +57,10 @@ public class ProfitService {
                 .limit(availabilityEconomy)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        logger.info("The calculated profit {} for premium and {} for economy rooms", premiumProfit, economyProfit);
+        final Profit profit = new Profit(premiumProfit, economyProfit);
 
-        return new Profit(premiumProfit, economyProfit);
+        logger.info("The calculated profit {} for premium and {} for economy rooms", profit.getPremium(), profit.getEconomy());
+
+        return profit;
     }
 }
