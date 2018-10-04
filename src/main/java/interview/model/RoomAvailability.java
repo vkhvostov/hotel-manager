@@ -10,12 +10,6 @@ public class RoomAvailability {
     private final int premium;
     private final int economy;
 
-    // TODO: remove!
-    public RoomAvailability() {
-        this.premium = 0;
-        this.economy = 0;
-    }
-
     public RoomAvailability(final int premium, final int economy) {
         this.premium = premium;
         this.economy = economy;
