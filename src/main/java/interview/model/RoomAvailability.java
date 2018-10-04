@@ -1,5 +1,7 @@
 package interview.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Objects;
 
 /**
@@ -7,7 +9,9 @@ import java.util.Objects;
  */
 public class RoomAvailability {
 
+    @JsonProperty("premium_availability")
     private final int premium;
+    @JsonProperty("economy_availability")
     private final int economy;
 
     public RoomAvailability(final int premium, final int economy) {

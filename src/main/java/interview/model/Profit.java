@@ -1,5 +1,7 @@
 package interview.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -8,7 +10,9 @@ import java.util.Objects;
  */
 public class Profit {
 
+    @JsonProperty("premium_profit")
     private final BigDecimal premium;
+    @JsonProperty("economy_profit")
     private final BigDecimal economy;
 
     public Profit(final BigDecimal premium, final BigDecimal economy) {
