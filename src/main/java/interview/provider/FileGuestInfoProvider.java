@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import interview.model.GuestInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
@@ -22,15 +24,20 @@ import java.util.stream.Collectors;
 @Component
 public class FileGuestInfoProvider implements GuestInfoProvider {
 
-    private static final String FILE_PATH = "src/main/resources/hotel_guests.json";
-
     private final Logger logger = LogManager.getLogger(this.getClass());
+
+    private final String filePath;
+
+    @Autowired
+    public FileGuestInfoProvider(@Value("${guest.info.file}") final String filePath) {
+        this.filePath = filePath;
+    }
 
     @Override
     public List<GuestInfo> retrieveGuestInfo() {
         try {
-            logger.info("Attempt to get guest info from the file [{}]", FILE_PATH);
-            final byte[] encoded = Files.readAllBytes(Paths.get(FILE_PATH));
+            logger.info("Attempt to get guest info from the file [{}]", filePath);
+            final byte[] encoded = Files.readAllBytes(Paths.get(filePath));
             final String content = new String(encoded, Charset.defaultCharset());
             final ObjectMapper mapper = new ObjectMapper();
             final BigDecimal[] clientAcceptablePrices = mapper.readValue(content, BigDecimal[].class);

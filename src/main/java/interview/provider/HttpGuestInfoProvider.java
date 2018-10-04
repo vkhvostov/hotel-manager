@@ -3,6 +3,8 @@ package interview.provider;
 import interview.model.GuestInfo;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.stereotype.Component;
@@ -20,13 +22,14 @@ import java.util.stream.Collectors;
 @Component
 public class HttpGuestInfoProvider implements GuestInfoProvider {
 
-    private static final String URL = "https://gist.githubusercontent.com/fjahr/b164a446db285e393d8e4b36d17f4143/raw/75108c09a72a001a985d27b968a0ac5a867e830b/smarthost_hotel_guests.json";
-
     private final Logger logger = LogManager.getLogger(this.getClass());
 
     private final RestTemplate restTemplate;
+    private final String guestInfoUrl;
 
-    public HttpGuestInfoProvider() {
+    @Autowired
+    public HttpGuestInfoProvider(@Value("${guest.info.url}") final String guestInfoUrl) {
+        this.guestInfoUrl = guestInfoUrl;
         this.restTemplate = new RestTemplate();
 
         // Make rest template able to parse text/plain as a json
@@ -37,8 +40,8 @@ public class HttpGuestInfoProvider implements GuestInfoProvider {
 
     @Override
     public List<GuestInfo> retrieveGuestInfo() {
-        logger.info("Requesting guest info from the provided endpoint");
-        final BigDecimal[] response = restTemplate.getForObject(URL, BigDecimal[].class);
+        logger.info("Requesting guest info from the provided endpoint {}", guestInfoUrl);
+        final BigDecimal[] response = restTemplate.getForObject(guestInfoUrl, BigDecimal[].class);
         logger.info("Response: " + Arrays.toString(response));
         return response != null ? Arrays.stream(response).map(GuestInfo::new).collect(Collectors.toList()) : Collections.emptyList();
     }
