@@ -1,0 +1,60 @@
+swagger: "2.0"
+info:
+  description: "Interview challange for a hotel software company"
+  version: "1.0-SNAPSHOT"
+  title: "Hotel Manager"
+  contact:
+    email: "viktor.khvostov@gmail.com"
+tags:
+- name: "profit"
+  description: "Profit of the hotel"
+schemes:
+- "http"
+paths:
+  /profit:
+    post:
+      tags:
+      - "profit"
+      summary: "Profit of the hotel"
+      description: ""
+      operationId: "profit"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Room availability"
+        required: true
+        schema:
+          $ref: "#/definitions/RoomAvailablity"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Profit"
+        400:
+          description: "Invalid input"
+definitions:
+  RoomAvailablity:
+    type: "object"
+    properties:
+      premium_availability:
+        type: "number"
+        format: "decimal"
+      economy_availability:
+        type: "number"
+        format: "decimal"
+  Profit:
+    type: "object"
+    properties:
+      premium_profit:
+        type: "number"
+        format: "decimal"
+      economy_profit:
+        type: "number"
+        format: "decimal"
+externalDocs:
+  description: "Find out more at github"
+  url: "https://github.com/vkhvostov/hotel-manager/blob/master/README.md"
