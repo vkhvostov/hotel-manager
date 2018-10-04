@@ -112,6 +112,11 @@ Response example:
 ```
 
 **How to run tests:**
+
 1. Clone the repo
 1. Run `./gradlew test` in the root directory
 1. See output
+
+**API definition:**
+
+API definition can be found in `api/swagger.yaml`
