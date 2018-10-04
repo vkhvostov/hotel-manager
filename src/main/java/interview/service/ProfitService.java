@@ -4,6 +4,8 @@ import interview.model.Profit;
 import interview.model.RoomAvailability;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
 
@@ -20,7 +22,12 @@ public class ProfitService {
 
     private final Logger logger = LogManager.getLogger(this.getClass());
 
-    private final BigDecimal premiumThreshold = BigDecimal.valueOf(100);
+    private final BigDecimal premiumThreshold;
+
+    @Autowired
+    public ProfitService(@Value("${premium.threshold}") final BigDecimal premiumThreshold) {
+        this.premiumThreshold = premiumThreshold;
+    }
 
     public Profit calculateProfit(final RoomAvailability roomAvailability, final List<BigDecimal> guestInfo) {
         final int availabilityPremium = roomAvailability.getPremium();

@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 
 public class ProfitServiceTest {
 
-    private final ProfitService profitService = new ProfitService();
+    private final ProfitService profitService = new ProfitService(BigDecimal.valueOf(100));
 
     private final List<BigDecimal> guestInfo = Lists.newArrayList(23, 45, 155, 374, 22, 99, 100, 101, 115, 209).stream().map(BigDecimal::new).collect(Collectors.toList());
 
