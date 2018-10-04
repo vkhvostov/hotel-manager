@@ -15,8 +15,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created on 03.10.18
- * TODO: Add comment
+ * Guest info provider based on rest call to predefined URL
  */
 @Component
 public class HttpGuestInfoProvider implements GuestInfoProvider {

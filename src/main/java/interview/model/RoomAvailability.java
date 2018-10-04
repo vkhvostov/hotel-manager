@@ -3,8 +3,7 @@ package interview.model;
 import java.util.Objects;
 
 /**
- * Created on 03.10.18
- * TODO: Add comment
+ * Entity represents the hotel room availability
  */
 public class RoomAvailability {
 

@@ -4,8 +4,7 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
- * Created on 03.10.18
- * TODO: Add comment
+ * Represents financial profit for the hotel from premium and economy rooms
  */
 public class Profit {
 

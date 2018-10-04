@@ -17,8 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * Created on 04.10.18
- * TODO: Add comment
+ * Guest info provider based on receiving data from predefined local file
  */
 @Component
 public class FileGuestInfoProvider implements GuestInfoProvider {

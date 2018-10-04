@@ -1,15 +1,11 @@
 package interview.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
- * Created on 03.10.18
- * TODO: Add comment
+ * Represents guest info, so far consisted from acceptable price that a client would like to pay per night in the hotel
  */
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class GuestInfo {
 
     private final BigDecimal acceptablePrice;
