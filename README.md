@@ -94,3 +94,8 @@ can find another solution.
 1. Clone the repo
 1. Run `./gradlew bootRun` in the root directory
 1. You can find the service on the `http://localhost:8080/`
+
+**How to run tests:**
+1. Clone the repo
+1. Run `./gradlew test` in the root directory
+1. See output
