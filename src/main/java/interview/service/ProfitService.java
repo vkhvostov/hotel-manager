@@ -67,8 +67,8 @@ public class ProfitService {
                 .limit(availabilityEconomy)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        final int premiumUsage = availabilityPremium > premiumClients.size() ? premiumClients.size() : availabilityPremium;
-        final int economyUsage = availabilityEconomy > economyClients.size() ? economyClients.size() : availabilityEconomy;
+        final int premiumUsage = min(availabilityPremium, premiumClients.size());
+        final int economyUsage = min(availabilityEconomy, economyClients.size());
 
         final Profit profit = new Profit(premiumUsage, economyUsage, premiumProfit, economyProfit);
 
