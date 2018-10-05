@@ -98,7 +98,7 @@ can find another solution.
 Request example:
 ```json
 {
-  "premium_availability": 1,
+  "premium_availability": 7,
   "economy_availability": 5
 }
 ```
@@ -106,7 +106,9 @@ Request example:
 Response example:
 ```json
 {
-  "premium_profit": 374,
+  "premium_usage": 6,
+  "economy_usage": 4,
+  "premium_profit": 1054,
   "economy_profit": 189
 }
 ```
