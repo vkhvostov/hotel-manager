@@ -58,6 +58,16 @@ public class ProfitServiceTest {
         Assert.assertEquals(expectedProfit, actualProfit);
     }
 
+    // The test case when number of available rooms for economy clients is not enough by one but for premium clients is more than needed
+    @Test
+    public void calculateProfitWhenPremiumRoomsMoreThanNeededEconomyNotEnoughByOne() {
+        final RoomAvailability roomAvailability = new RoomAvailability(15, 3);
+        final Profit actualProfit = profitService.calculateProfit(roomAvailability, guestInfo);
+        final Profit expectedProfit = new Profit(7, 3, BigDecimal.valueOf(1153), BigDecimal.valueOf(90));
+
+        Assert.assertEquals(expectedProfit, actualProfit);
+    }
+
     // The test case when no available rooms
     @Test
     public void calculateProfitWhenNoAvailableRooms() {

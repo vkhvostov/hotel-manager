@@ -14,6 +14,8 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static com.google.common.primitives.Ints.min;
+
 /**
  * Service responsible for calculating profit of the hotel for current hotel configuration
  */
@@ -50,8 +52,9 @@ public class ProfitService {
         if (availabilityPremium > premiumClients.size() && availabilityEconomy < economyClients.size()) {
             // upgrade some economy clients to premium level
             final int freePremiumRooms = availabilityPremium - premiumClients.size();
+            final int economyClientsWithoutRoom = economyClients.size() - availabilityEconomy;
             final List<BigDecimal> upgradedEconomyClients = economyClients.stream()
-                    .limit(freePremiumRooms)
+                    .limit(min(freePremiumRooms, economyClientsWithoutRoom))
                     .collect(Collectors.toList());
             economyClients.removeAll(upgradedEconomyClients);
             premiumClients.addAll(upgradedEconomyClients);
