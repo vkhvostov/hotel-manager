@@ -64,9 +64,12 @@ public class ProfitService {
                 .limit(availabilityEconomy)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        final Profit profit = new Profit(premiumProfit, economyProfit);
+        final int premiumUsage = availabilityPremium > premiumClients.size() ? premiumClients.size() : availabilityPremium;
+        final int economyUsage = availabilityEconomy > economyClients.size() ? economyClients.size() : availabilityEconomy;
 
-        logger.info("The calculated profit {} for premium and {} for economy rooms", profit.getPremium(), profit.getEconomy());
+        final Profit profit = new Profit(premiumUsage, economyUsage, premiumProfit, economyProfit);
+
+        logger.info("The calculated profit {} for premium and {} for economy rooms", profit.getPremiumProfit(), profit.getEconomyProfit());
 
         return profit;
     }

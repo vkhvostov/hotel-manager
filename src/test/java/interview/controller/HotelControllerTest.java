@@ -22,7 +22,7 @@ public class HotelControllerTest {
     private final ProfitService profitService = Mockito.mock(ProfitService.class);
     private final HotelController controller = new HotelController(provider, profitService);
 
-    private final Profit profit = new Profit(BigDecimal.ZERO, BigDecimal.TEN);
+    private final Profit profit = new Profit(0, 1, BigDecimal.ZERO, BigDecimal.TEN);
 
     @Before
     public void setUp() throws Exception {

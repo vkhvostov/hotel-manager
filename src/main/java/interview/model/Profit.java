@@ -6,47 +6,65 @@ import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
- * Represents financial profit for the hotel from premium and economy rooms
+ * Represents usage and financial profit of premium and economy rooms
  */
 public class Profit {
 
+    @JsonProperty("premium_usage")
+    private final int premiumUsage;
+    @JsonProperty("economy_usage")
+    private final int economyUsage;
     @JsonProperty("premium_profit")
-    private final BigDecimal premium;
+    private final BigDecimal premiumProfit;
     @JsonProperty("economy_profit")
-    private final BigDecimal economy;
+    private final BigDecimal economyProfit;
 
-    public Profit(final BigDecimal premium, final BigDecimal economy) {
-        this.premium = premium.setScale(2, BigDecimal.ROUND_HALF_EVEN);
-        this.economy = economy.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+    public Profit(final int premiumUsage, final int economyUsage, final BigDecimal premiumProfit, final BigDecimal economy) {
+        this.premiumUsage = premiumUsage;
+        this.economyUsage = economyUsage;
+        this.premiumProfit = premiumProfit.setScale(2, BigDecimal.ROUND_HALF_EVEN);
+        this.economyProfit = economy.setScale(2, BigDecimal.ROUND_HALF_EVEN);
     }
 
-    public BigDecimal getPremium() {
-        return premium;
+    public int getPremiumUsage() {
+        return premiumUsage;
     }
 
-    public BigDecimal getEconomy() {
-        return economy;
+    public int getEconomyUsage() {
+        return economyUsage;
+    }
+
+    public BigDecimal getPremiumProfit() {
+        return premiumProfit;
+    }
+
+    public BigDecimal getEconomyProfit() {
+        return economyProfit;
     }
 
     @Override
-    public boolean equals(final Object o) {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        final Profit profit = (Profit) o;
-        return Objects.equals(premium, profit.premium) &&
-                Objects.equals(economy, profit.economy);
+        Profit profit = (Profit) o;
+        return premiumUsage == profit.premiumUsage &&
+                economyUsage == profit.economyUsage &&
+                Objects.equals(premiumProfit, profit.premiumProfit) &&
+                Objects.equals(economyProfit, profit.economyProfit);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(premium, economy);
+        return Objects.hash(premiumUsage, economyUsage, premiumProfit, economyProfit);
     }
 
     @Override
     public String toString() {
         return "Profit{" +
-                "premium=" + premium +
-                ", economy=" + economy +
+                "premiumUsage=" + premiumUsage +
+                ", economyUsage=" + economyUsage +
+                ", premiumProfit=" + premiumProfit +
+                ", economyProfit=" + economyProfit +
                 '}';
     }
 }
