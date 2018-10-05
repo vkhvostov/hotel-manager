@@ -49,6 +49,12 @@ definitions:
   Profit:
     type: "object"
     properties:
+      premium_usage:
+        type: "integer"
+        format: "int32"
+      economy_usage:
+        type: "integer"
+        format: "int32"
       premium_profit:
         type: "number"
         format: "decimal"
